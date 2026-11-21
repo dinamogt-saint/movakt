@@ -2,7 +2,9 @@
   "name": "movakt",
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat"],
+  // Preview only: lets visitors click through checkout without Stripe. Delete before launch.
+  "vars": { "ALLOW_MOCK_CHECKOUT": "1" },
   "d1_databases": [
-    { "binding": "DB", "database_name": "movakt", "database_id": "local-dev", "migrations_dir": "migrations" }
+    { "binding": "DB", "database_name": "movakt", "database_id": "1ca65088-1609-452e-87d0-a4d20aacab33", "migrations_dir": "migrations" }
   ]
 }

@@ -17,6 +17,7 @@ export interface Env {
   BUNNY_TOKEN_KEY?: string;
   BUNNY_VIDEO_IDS?: string;
   TRIBUTE_SHARED_TOKEN?: string;
+  ALLOW_MOCK_CHECKOUT?: string;
 }
 export const env = cfEnv as unknown as Env;
 export const lang = (v: unknown): Lang => (v === 'en' ? 'en' : 'ru');

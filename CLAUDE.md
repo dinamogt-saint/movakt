@@ -14,3 +14,5 @@ Landing + sales site for Katerina's 3-lesson posture mini-course. Full spec: doc
 - No STRIPE_SECRET_KEY → mock checkout (localhost only): purchase + token are created instantly, email is printed to the dev log.
 - No RESEND_API_KEY → emails go to the dev log. No BUNNY_* → video placeholders on /watch.
 - Signature test: `node --experimental-strip-types src/lib/stripe-sig.test.ts`.
+- Deploy: `npx astro build && npx wrangler deploy` → https://movakt.dmrozenbergs.workers.dev. Remote D1 migrations: `npx wrangler d1 migrations apply movakt --remote`.
+- Preview has `ALLOW_MOCK_CHECKOUT=1` in wrangler.jsonc vars (free mock checkout). Delete it before launch.
