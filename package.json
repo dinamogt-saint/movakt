@@ -1,0 +1,18 @@
+{
+  "name": "movakt",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.4.9",
+    "@fontsource/onest": "^5.3.1",
+    "astro": "^7.4.13"
+  },
+  "devDependencies": {
+    "wrangler": "^4.166.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "movakt",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    { "binding": "DB", "database_name": "movakt", "database_id": "local-dev", "migrations_dir": "migrations" }
+  ]
+}

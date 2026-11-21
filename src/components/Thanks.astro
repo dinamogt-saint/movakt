@@ -1,0 +1,44 @@
+---
+import Shell from './Shell.astro';
+import ru from '../content/ru.json';
+import en from '../content/en.json';
+interface Props { lang: 'ru' | 'en' }
+const { lang } = Astro.props;
+const t = (lang === 'en' ? en : ru).thanks;
+const prefix = lang === 'en' ? '/en' : '';
+---
+<Shell lang={lang} title={t.title} noindex>
+  <div class="box" data-thanks data-ready={t.ready} data-slow={t.slow}>
+    <h1>{t.title}</h1>
+    <p class="msg" data-msg aria-live="polite">{t.waiting}</p>
+    <a class="btn btn-solid" data-open hidden href="#">{t.open}</a>
+    <p class="hint">{t.spam} <a href={`${prefix}/access`}>{t.lost}</a></p>
+  </div>
+</Shell>
+<script>
+  const box = document.querySelector<HTMLElement>('[data-thanks]')!;
+  const msg = box.querySelector<HTMLElement>('[data-msg]')!;
+  const open = box.querySelector<HTMLAnchorElement>('[data-open]')!;
+  const id = new URLSearchParams(location.search).get('session_id');
+  // Poll every 2s for up to 20s while the webhook lands.
+  let tries = 0;
+  async function poll() {
+    if (!id) { msg.textContent = box.dataset.slow!; return; }
+    try {
+      const r = await fetch(`/api/session-status?session_id=${encodeURIComponent(id)}`);
+      const d = await r.json();
+      if (d.status === 'ready') { msg.textContent = box.dataset.ready!; open.href = d.url; open.hidden = false; return; }
+    } catch {}
+    if (++tries >= 10) { msg.textContent = box.dataset.slow!; return; }
+    setTimeout(poll, 2000);
+  }
+  poll();
+</script>
+<style>
+  .box { max-width: 560px; display: grid; gap: 20px; }
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+  .msg { font-size: 19px; }
+  .hint { font-size: 15px; color: var(--muted); }
+  [data-open] { justify-self: start; }
+  .btn-solid[hidden] { display: none; }
+</style>

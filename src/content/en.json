@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "title": "First steps to better posture — a 3-lesson mini-course | MOVA",
+    "description": "3 recorded posture lessons, about 50 minutes, follow-along format. Katerina Khimicheva, posture coach. Lifetime access, no sign-up."
+  },
+  "header": {
+    "buy": "Buy — €{price}",
+    "langLabel": "Language",
+    "navLabel": "Sections",
+    "nav": [
+      {
+        "href": "#for",
+        "label": "who it's for"
+      },
+      {
+        "href": "#lessons",
+        "label": "lessons"
+      },
+      {
+        "href": "#about",
+        "label": "about me"
+      },
+      {
+        "href": "#price",
+        "label": "price"
+      },
+      {
+        "href": "#faq",
+        "label": "faq"
+      },
+      {
+        "href": "#contacts",
+        "label": "contacts"
+      }
+    ]
+  },
+  "hero": {
+    "title": "First steps to better posture",
+    "sub": "3 lessons you can repeat at home.",
+    "cta": "Buy the lessons",
+    "photoAlt": "Katerina Khimicheva",
+    "note": "Recorded, follow along. Lifetime access.",
+    "listLabel": "Programme"
+  },
+  "audience": {
+    "label": "who it's for",
+    "lead": "Whether you have worked on your posture before or are just starting, this programme will help most if:",
+    "items": [
+      "You don't like how your body looks: slouching, rounded shoulders, a belly that sticks out",
+      "You have pain or tension in your back, neck, lower back or between the shoulder blades",
+      "You feel you don't really understand or sense your own body",
+      "You lack confidence and want to feel freer and more comfortable in your body",
+      "You don't know which exercises suit you and doubt whether you're doing them right",
+      "You've tried before, but without a clear plan you quickly lost motivation and stopped"
+    ],
+    "outro": "If you recognise yourself in even one of these, this programme is for you."
+  },
+  "lessons": {
+    "label": "what's inside",
+    "lead": "3 foundational lessons. Each one builds on the one before.",
+    "minutes": "min",
+    "more": "More about self-correction",
+    "items": [
+      {
+        "num": "01",
+        "title": "Hip and rib cage mobility",
+        "min": 10,
+        "body": [
+          "Hip mobility is the basis of posture work. It supports the pelvic area and eases pain and stiffness in the lower back.",
+          "Rib cage mobility helps if you feel tightness or stiffness in your upper back, back and neck. Breathing and movement both become freer."
+        ],
+        "short": "Hip and rib cage mobility"
+      },
+      {
+        "num": "02",
+        "title": "Basic self-correction",
+        "min": 25,
+        "body": [
+          "\"How do I straighten up properly?\" is one of the questions I hear most often. The answer is the skill of basic self-correction.",
+          "This is the tool that lets you see yourself standing straight in the mirror, with a straight back and an engaged core. And you will feel relief in your body."
+        ],
+        "details": [
+          "When we exercise — posture work, the gym, yoga, any sport — while keeping our usual imbalances and poor alignment, we risk locking those patterns in even deeper.",
+          "If the foundation, our posture, is built wrong, exercise may not only fail to give the result you want but can make existing problems worse.",
+          "That is why moving into self-correction is the first step before any load."
+        ],
+        "short": "Basic self-correction"
+      },
+      {
+        "num": "03",
+        "title": "Holding self-correction under load",
+        "min": 15,
+        "body": [
+          "The final piece: we turn the straight posture you built in lesson two into a natural habit.",
+          "Learning to straighten up consciously is great. But for that position to become natural for your body, it has to be reinforced. That is exactly what we do in lesson three."
+        ],
+        "short": "Holding it under load"
+      }
+    ],
+    "outro": "Once you finish all 3 lessons, you'll see for yourself: healthy posture is simpler than it seems."
+  },
+  "format": {
+    "label": "format",
+    "items": [
+      {
+        "title": "Recorded",
+        "text": "About 50 minutes in total. Watch on your phone whenever it suits you."
+      },
+      {
+        "title": "Follow along",
+        "text": "I explain every exercise in detail: what to do, how, and where you should feel it."
+      },
+      {
+        "title": "Yours to keep",
+        "text": "A personal link, no account or password. Repeat the lessons as often as you like."
+      },
+      {
+        "title": "Equipment optional",
+        "text": "2–3 kg dumbbells or 2 water bottles, 2 sticks or mops. You can do without them too."
+      }
+    ]
+  },
+  "about": {
+    "label": "about me",
+    "body": "I'm Katerina, a posture coach based in Riga. For [N] years I've been helping women straighten up without exhausting workouts. [Education or certificates.] These 3 lessons are the foundation I start with for every client.",
+    "link": "Instagram @kate.himicheva",
+    "photoAlt": "Katerina during a session"
+  },
+  "reviews": {
+    "label": "reviews",
+    "lead": "What women say after the mini-course",
+    "placeholder": "Review screenshot",
+    "hint": "Swipe sideways"
+  },
+  "price": {
+    "label": "price",
+    "title": "3 posture lessons",
+    "includes": [
+      "Hip and rib cage mobility — 10 min",
+      "Basic self-correction — 25 min",
+      "Holding it under load — 15 min",
+      "Lifetime access on any device"
+    ],
+    "pay": "Pay — €{price}",
+    "note": "Your access link arrives by email right after payment."
+  },
+  "pay": {
+    "title": "3 posture lessons",
+    "method": "Payment method",
+    "card": "Card — €{price}",
+    "cardNote": "Visa, Mastercard, Apple Pay, Google Pay. Your link arrives by email.",
+    "tg": "",
+    "tgNote": "",
+    "email": "Email for your lesson link",
+    "emailPh": "you@example.com",
+    "submit": "Pay",
+    "terms": "By clicking Pay you agree to the",
+    "termsLink": "terms of sale",
+    "close": "Close",
+    "error": "We couldn't open the payment page. Please try again or contact us.",
+    "emailError": "Please check your email: your lesson link will be sent there."
+  },
+  "faq": {
+    "label": "questions",
+    "items": [
+      {
+        "q": "What language are the lessons in?",
+        "a": "The lessons are recorded in Russian. [English subtitles — to be confirmed.]"
+      },
+      {
+        "q": "How long do the lessons take?",
+        "a": "About 50 minutes in total. They are recorded in a follow-along format, so you can do them whenever suits you."
+      },
+      {
+        "q": "Do I need equipment?",
+        "a": "2–3 kg dumbbells and 2 sticks at shoulder height or taller (mops, brooms, ski poles) are a nice bonus, but not required. Swap the dumbbells for something heavy, like 2 bags of sugar or 2 water bottles. Swap the sticks for chair legs, or do without: they only help you find support and your centre of gravity."
+      },
+      {
+        "q": "I've never exercised before",
+        "a": "I explain every exercise in as much detail as possible: what to do, how, and where you should feel it."
+      },
+      {
+        "q": "Will the lessons help with pain?",
+        "a": "Many people feel better, but the lessons don't replace a doctor. If your pain is acute or unexplained, see a specialist first."
+      },
+      {
+        "q": "How do I get access?",
+        "a": "Right after payment, on the page and by email."
+      },
+      {
+        "q": "How long do I have access?",
+        "a": "Forever, on any device: phone or computer."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "[Wording to be approved by Katerina and matched to the terms of sale.]"
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "These materials are for educational purposes and do not replace medical advice.",
+    "name": "Katerina Khimicheva",
+    "terms": "Terms of sale",
+    "privacy": "Privacy",
+    "lost": "Lost your lesson link?",
+    "contacts": "Contacts"
+  },
+  "sticky": {
+    "buy": "Buy the lessons"
+  },
+  "mail": {
+    "subject": "Your 3 posture lessons",
+    "hello": "Hello!",
+    "body": "Thank you for your purchase. Your lessons open with a personal link that works forever, on any device:",
+    "waiver": "You received access to digital content immediately after payment and confirmed that the 14-day right of withdrawal does not apply to it.",
+    "waiverCheckout": "I want access to the lessons right away and understand that I thereby lose my 14-day right of withdrawal.",
+    "support": "If something does not open, write to us:"
+  },
+  "thanks": {
+    "title": "Payment received",
+    "waiting": "Preparing your lesson link, this takes a couple of seconds…",
+    "ready": "Your lesson link is ready. We have also sent it to your email.",
+    "open": "Open the lessons",
+    "slow": "The link is not ready yet. It will arrive by email within a couple of minutes. Check your spam folder.",
+    "spam": "No email? Check your spam folder or request the link again.",
+    "lost": "Request the link again"
+  },
+  "access": {
+    "title": "Lost your lesson link?",
+    "lead": "Enter the email you used at checkout and we will send the link again.",
+    "email": "Email",
+    "submit": "Send the link",
+    "done": "If there is a purchase with this email, the link is on its way. Check your spam folder too.",
+    "error": "Could not send. Please try again in a minute.",
+    "tg": ""
+  },
+  "watch": {
+    "title": "Your lessons",
+    "lead": "Watch them in order: each lesson builds on the one before.",
+    "prepare": "What to prepare",
+    "prep": [
+      "A mat and a little free space.",
+      "Comfortable clothes, bare feet are fine.",
+      "2–3 kg dumbbells or 2 water bottles, 2 sticks or mops — optional."
+    ],
+    "placeholder": "The video will appear here",
+    "gear": "Optional equipment: 2–3 kg dumbbells or 2 water bottles, 2 shoulder-height sticks (mops, ski poles). You can do without them.",
+    "review": "Finished the lessons? Tell us how it feels: a review helps a lot.",
+    "reviewLink": "Write on Telegram",
+    "support": "Something not working? Write to us:"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "lead": "The link may be outdated or have a typo.",
+    "home": "Home",
+    "access": "Lost your lesson link?"
+  }
+}

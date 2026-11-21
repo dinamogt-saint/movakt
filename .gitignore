@@ -1,0 +1,9 @@
+node_modules
+dist
+.astro
+.env
+.impeccable/questions
+.impeccable/review
+.dev.vars
+.wrangler
+.hallmark

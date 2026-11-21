@@ -1,0 +1,77 @@
+:root {
+  --bg: #faf8f5;
+  --surface: #ece7e0;
+  --field: #ffffff;
+  --ink: #1d1b19;
+  --muted: #69645e;
+  --line: #e3ded7;
+  --error: #9b1c1c;
+
+  --container: 1120px;
+  --gutter: 20px;
+  --section: 72px;
+  --font: 'Onest', system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (min-width: 900px) {
+  :root { --section: 120px; --gutter: 40px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.55 var(--font);
+  font-feature-settings: 'tnum' 0;
+  -webkit-font-smoothing: antialiased;
+}
+@media (min-width: 900px) { body { font-size: 18px; } }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+::selection { background: var(--ink); color: var(--bg); }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+h1, h2, h3 { font-weight: 500; text-wrap: balance; }
+p { text-wrap: pretty; }
+
+.wrap { width: min(var(--container), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; padding: 0 24px;
+  font: 500 14px/1 var(--font); letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; border-radius: 0;
+  border: 1px solid currentColor; background: transparent; color: inherit;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-solid { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-solid:hover { background: transparent; color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-sm { min-height: 40px; padding: 0 14px; font-size: 12px; }
+
+/* placeholder for photos until Katerina sends them */
+.ph {
+  background: var(--surface);
+  display: grid; place-items: center;
+  color: var(--muted); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+}
+
+/* section ledger: label column + content, 1px rule between sections */
+.sec { padding-block: var(--section); border-top: 1px solid var(--line); }
+.sec-grid { display: grid; gap: 28px; }
+.label {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+}
+.lead { font-weight: 500; max-width: 52ch; }
+@media (min-width: 900px) {
+  .sec-grid { grid-template-columns: 3fr 9fr; gap: 40px; }
+  .sec-grid > .label { position: sticky; top: 32px; align-self: start; }
+}
+
+/* logo: spaced caps wordmark with a small KT */
+.logo { display: inline-flex; align-items: flex-start; gap: 4px; font-weight: 600; letter-spacing: 0.16em; font-size: 16px; text-decoration: none; }
+.logo-kt { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.75; margin-top: 1px; }

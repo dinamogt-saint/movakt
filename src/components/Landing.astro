@@ -1,0 +1,422 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { config } from '../config';
+import type ru from '../content/ru.json';
+
+interface Props { t: typeof ru; lang: 'ru' | 'en' }
+const { t, lang } = Astro.props;
+const price = (s: string) => s.replace('{price}', String(config.priceEur));
+const lessons = t.lessons.items;
+---
+<Layout lang={lang} title={t.meta.title} description={t.meta.description}>
+  <header class="head wrap">
+    <a class="logo" href={lang === 'ru' ? '/' : '/en'}>MOVA<span class="logo-kt">KT</span></a>
+    <nav class="langs" aria-label={t.header.langLabel}>
+      <a href="/" aria-current={lang === 'ru' ? 'true' : undefined}>RU</a>
+      <span aria-hidden="true">/</span>
+      <a href="/en" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+    </nav>
+    <button class="btn btn-line btn-sm head-buy" type="button" data-pay>{price(t.header.buy)}</button>
+    <nav class="nav" aria-label={t.header.navLabel}>
+      {t.header.nav.map((n) => <a href={n.href}>{n.label}</a>)}
+    </nav>
+  </header>
+
+  <section class="hero wrap" id="top">
+    <div class="ph hero-photo" role="img" aria-label={t.hero.photoAlt}>4:5</div>
+    <div class="hero-text">
+      <h1>{t.hero.title}</h1>
+      <p class="hero-sub">{t.hero.sub}</p>
+      <ul class="hero-list" aria-label={t.hero.listLabel}>
+        {lessons.map((l) => <li><span>{l.short}</span><span class="num">{l.min} {t.lessons.minutes}</span></li>)}
+      </ul>
+      <p class="hero-note">{t.hero.note}</p>
+      <div class="hero-cta">
+        <button class="btn btn-solid" type="button" data-pay>{t.hero.cta} — €{config.priceEur}</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="for" aria-labelledby="s-for">
+    <div class="wrap sec-grid">
+      <h2 class="label" id="s-for">/ {t.audience.label} /</h2>
+      <div>
+        <p class="lead">{t.audience.lead}</p>
+        <ul class="cells">
+          {t.audience.items.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="outro">{t.audience.outro}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec lessons" id="lessons" aria-labelledby="s-in">
+    <div class="wrap sec-grid">
+      <h2 class="label" id="s-in">/ {t.lessons.label} /</h2>
+      <div>
+        <p class="lead">{t.lessons.lead}</p>
+        {lessons.map((l) => (
+          <article class="lesson">
+            <span class="lesson-num num">{l.num}</span>
+            <h3>{l.title}</h3>
+            <p class="lesson-min num">≈ {l.min} {t.lessons.minutes}</p>
+            {l.body.map((p) => <p>{p}</p>)}
+            {'details' in l && l.details && (
+              <details class="more">
+                <summary>{t.lessons.more}</summary>
+                {l.details.map((p) => <p>{p}</p>)}
+              </details>
+            )}
+          </article>
+        ))}
+        <p class="outro">{t.lessons.outro}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s-format">
+    <div class="wrap sec-grid">
+      <h2 class="label" id="s-format">/ {t.format.label} /</h2>
+      <dl class="format">
+        {t.format.items.map((f) => (
+          <div><dt>{f.title}</dt><dd>{f.text}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec" id="about" aria-labelledby="s-about">
+    <div class="wrap sec-grid">
+      <h2 class="label" id="s-about">/ {t.about.label} /</h2>
+      <div class="about">
+        <div class="ph about-photo" role="img" aria-label={t.about.photoAlt}>3:4</div>
+        <div>
+          <p class="about-text">{t.about.body}</p>
+          <a class="about-link" href={config.instagram} rel="noopener">{t.about.link}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s-reviews">
+    <div class="wrap sec-grid">
+      <h2 class="label" id="s-reviews">/ {t.reviews.label} /</h2>
+      <div>
+        <p class="lead">{t.reviews.lead}</p>
+      </div>
+    </div>
+    <div class="rack-wrap wrap">
+      <ul class="rack" tabindex="0" aria-label={t.reviews.lead}>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <li class="ph rack-item">{t.reviews.placeholder} {n}</li>
+        ))}
+      </ul>
+      <p class="rack-hint">{t.reviews.hint}</p>
+    </div>
+  </section>
+
+  <section class="sec price-sec" id="price" aria-labelledby="s-price">
+    <div class="wrap sec-grid">
+      <h2 class="label" id="s-price">/ {t.price.label} /</h2>
+      <div class="price-card">
+        <h3>{t.price.title}</h3>
+        <ul class="price-list">
+          {t.price.includes.map((i) => <li>{i}</li>)}
+        </ul>
+        <p class="price-num num">€{config.priceEur}</p>
+        <div class="price-actions">
+          <button class="btn btn-solid" type="button" data-pay>{price(t.price.pay)}</button>
+        </div>
+        <p class="price-note">{t.price.note}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="s-faq">
+    <div class="wrap sec-grid">
+      <h2 class="label" id="s-faq">/ {t.faq.label} /</h2>
+      <div class="faq">
+        {t.faq.items.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot" id="contacts">
+    <div class="wrap foot-grid">
+      <p class="foot-disc">{t.footer.disclaimer}</p>
+      <div class="foot-cols">
+        <p>{t.footer.name}</p>
+        <p>
+          <a href={`mailto:${config.email}`}>{config.email}</a><br />
+          <a href={config.instagram} rel="noopener">Instagram</a> · <a href={config.telegram} rel="noopener">Telegram</a>
+        </p>
+        <p>
+          <a href={lang === 'ru' ? '/terms' : '/en/terms'}>{t.footer.terms}</a><br />
+          <a href={lang === 'ru' ? '/privacy' : '/en/privacy'}>{t.footer.privacy}</a><br />
+          <a href={lang === 'ru' ? '/access' : '/en/access'}>{t.footer.lost}</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky" data-sticky>
+    <span class="sticky-price num">€{config.priceEur}</span>
+    <button class="btn btn-solid" type="button" data-pay>{t.sticky.buy}</button>
+  </div>
+
+  <dialog class="pay" data-pay-dialog aria-labelledby="pay-title">
+    <form class="pay-form" data-pay-form data-lang={lang} data-tribute={config.tributeUrl} novalidate>
+      <div class="pay-head">
+        <h2 id="pay-title">{t.pay.title}</h2>
+        <button class="pay-close" type="button" data-pay-close aria-label={t.pay.close}></button>
+      </div>
+      <p class="pay-price num">€{config.priceEur}</p>
+      {lang === 'ru' ? (
+        <fieldset class="pay-methods">
+          <legend>{t.pay.method}</legend>
+          <label class="pay-method">
+            <input type="radio" name="method" value="card" checked />
+            <span><b>{price(t.pay.card)}</b><small>{t.pay.cardNote}</small></span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="method" value="telegram" />
+            <span><b>{t.pay.tg}</b><small>{t.pay.tgNote}</small></span>
+          </label>
+        </fieldset>
+      ) : (
+        <input type="hidden" name="method" value="card" />
+      )}
+      <div class="pay-email" data-email-row>
+        <label for="pay-email">{t.pay.email}</label>
+        <input id="pay-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder={t.pay.emailPh} aria-describedby="pay-msg" />
+      </div>
+      <p class="pay-msg" id="pay-msg" role="alert" data-pay-msg data-error={t.pay.error} data-email-error={t.pay.emailError}></p>
+      <button class="btn btn-solid pay-submit" type="submit">{t.pay.submit} — €{config.priceEur}</button>
+      <p class="pay-terms">{t.pay.terms} <a href={lang === 'ru' ? '/terms' : '/en/terms'}>{t.pay.termsLink}</a>.</p>
+    </form>
+  </dialog>
+</Layout>
+
+<script>
+  // Sticky buy bar: always on (mobile only via CSS), hidden while the price block is visible.
+  const bar = document.querySelector<HTMLElement>('[data-sticky]');
+  const priceSec = document.getElementById('price');
+  if (bar && priceSec) {
+    new IntersectionObserver(([e]) => bar.toggleAttribute('hidden', e.isIntersecting)).observe(priceSec);
+  }
+
+  // Payment dialog: one entry point, card (Stripe) or Telegram (Tribute, RU only).
+  const dialog = document.querySelector<HTMLDialogElement>('[data-pay-dialog]');
+  const form = document.querySelector<HTMLFormElement>('[data-pay-form]');
+  if (dialog && form) {
+    const emailRow = form.querySelector<HTMLElement>('[data-email-row]')!;
+    const email = form.querySelector<HTMLInputElement>('input[name=email]')!;
+    const msg = form.querySelector<HTMLElement>('[data-pay-msg]')!;
+    const submit = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    const method = () => (new FormData(form).get('method') as string) || 'card';
+    const sync = () => { emailRow.hidden = method() !== 'card'; msg.textContent = ''; };
+    form.addEventListener('change', sync);
+    document.querySelectorAll('[data-pay]').forEach((b) => b.addEventListener('click', () => { sync(); dialog.showModal(); }));
+    dialog.querySelector('[data-pay-close]')!.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (method() === 'telegram') { location.href = form.dataset.tribute!; return; }
+      if (!email.checkValidity() || !email.value) { msg.textContent = msg.dataset.emailError!; email.focus(); return; }
+      submit.disabled = true;
+      submit.setAttribute('aria-busy', 'true');
+      try {
+        const res = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ lang: form.dataset.lang, email: email.value }),
+        });
+        const data = await res.json();
+        if (!res.ok || !data.url) throw new Error(data.error || 'checkout failed');
+        location.href = data.url;
+      } catch {
+        msg.textContent = msg.dataset.error!;
+        submit.disabled = false;
+        submit.removeAttribute('aria-busy');
+      }
+    });
+  }
+</script>
+
+<style>
+  /* header */
+  .head {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 16px; row-gap: 10px;
+    padding-block: 14px 12px; border-bottom: 1px solid var(--line);
+  }
+  .langs { display: flex; gap: 6px; font-size: 13px; color: var(--muted); }
+  .langs a { text-decoration: none; }
+  .langs a[aria-current] { color: var(--ink); }
+  .head-buy { margin-left: auto; }
+  .nav {
+    order: 3; flex: 1 0 100%; display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none;
+    font-size: 15px; font-weight: 500;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { text-decoration: none; white-space: nowrap; }
+  .nav a:hover { color: var(--muted); }
+  @media (min-width: 900px) {
+    .head { flex-wrap: nowrap; padding-block: 20px; }
+    .nav { order: 0; flex: 0 1 auto; margin-left: auto; gap: 28px; }
+    .head-buy { margin-left: 28px; order: 1; }
+  }
+
+  /* hero: photo, headline, the programme as ruled rows */
+  .hero { display: grid; gap: 24px; padding-block: 16px 64px; }
+  .hero-photo { aspect-ratio: 4 / 3; }
+  .hero h1 { font-size: clamp(38px, 5.4vw, 64px); line-height: 1.05; letter-spacing: -0.02em; max-width: 13ch; }
+  .hero-sub { margin-top: 12px; color: var(--muted); max-width: 40ch; }
+  .hero-list { list-style: none; padding: 0; margin-top: 20px; border-top: 1px solid var(--line); }
+  .hero-list li {
+    display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line);
+  }
+  .hero-list .num { color: var(--muted); white-space: nowrap; }
+  .hero-note { margin-top: 12px; font-size: 15px; color: var(--muted); }
+  .hero-cta { margin-top: 28px; display: none; }
+  @media (min-width: 900px) {
+    .hero { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; align-items: end; padding-block: 48px 96px; }
+    .hero-photo { order: 2; aspect-ratio: 4 / 5; }
+    .hero-cta { display: block; }
+  }
+
+  /* audience: list ruled like a table, 2x3 on desktop */
+  .cells { list-style: none; padding: 0; margin-top: 32px; border-top: 1px solid var(--line); }
+  .cells li { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 700px) {
+    .cells { display: grid; grid-template-columns: 1fr 1fr; }
+    .cells li { padding: 24px 24px 24px 0; }
+    .cells li:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+  }
+  .outro { margin-top: 32px; font-weight: 500; max-width: 40ch; }
+
+  /* lessons */
+  .lesson { padding: 40px 0; border-bottom: 1px solid var(--line); max-width: 64ch; }
+  .lesson-num { display: block; font-size: clamp(48px, 7vw, 72px); font-weight: 400; line-height: 1; letter-spacing: -0.02em; color: var(--muted); }
+  .lesson h3 { margin-top: 20px; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; }
+  .lesson-min { margin: 6px 0 16px; font-size: 15px; color: var(--muted); }
+  .lesson p + p { margin-top: 12px; }
+  .more { margin-top: 20px; border-top: 1px solid var(--line); }
+  .more summary, .faq summary {
+    cursor: pointer; list-style: none; position: relative; padding: 16px 32px 16px 0; font-weight: 500;
+  }
+  .more summary::-webkit-details-marker, .faq summary::-webkit-details-marker { display: none; }
+  .more summary::before, .more summary::after, .faq summary::before, .faq summary::after {
+    content: ''; position: absolute; right: 4px; top: 50%; width: 14px; height: 1px; background: currentColor;
+    transition: transform 0.2s ease-out;
+  }
+  .more summary::after, .faq summary::after { transform: rotate(90deg); }
+  .more[open] summary::after, .faq details[open] summary::after { transform: rotate(0); }
+  .more p { margin: 0 0 12px; }
+
+  /* format */
+  .format { display: grid; border-top: 1px solid var(--line); }
+  .format > div { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .format dt { font-weight: 600; }
+  .format dd { margin-top: 6px; color: var(--muted); }
+  @media (min-width: 700px) {
+    .format { grid-template-columns: 1fr 1fr; }
+    .format > div { padding: 28px 28px 28px 0; }
+    .format > div:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--line); }
+  }
+
+  /* about */
+  .about { display: grid; gap: 28px; }
+  .about-photo { aspect-ratio: 3 / 4; max-width: 360px; }
+  .about-text { font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; max-width: 34ch; }
+  .about-link { display: inline-block; margin-top: 20px; }
+  @media (min-width: 700px) { .about { grid-template-columns: 5fr 7fr; gap: 48px; align-items: end; } }
+
+  /* reviews rack */
+  .rack-wrap { margin-top: 40px; }
+  .rack {
+    list-style: none; padding: 0 0 12px; display: flex; gap: 12px;
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    scrollbar-color: var(--ink) transparent; scrollbar-width: thin;
+  }
+  .rack-item { flex: 0 0 min(68vw, 260px); aspect-ratio: 9 / 16; scroll-snap-align: start; }
+  .rack-hint { margin-top: 12px; font-size: 13px; color: var(--muted); }
+  @media (min-width: 900px) { .rack-hint { display: none; } }
+
+  /* price: the one upholstered card below the hero */
+  .price-card { --line: #d8d0c5; background: var(--surface); padding: 32px 24px; }
+  @media (min-width: 700px) { .price-card { padding: 48px; } }
+  .price-card h3 { font-size: clamp(26px, 3vw, 34px); }
+  .price-list { list-style: none; padding: 0; margin-top: 24px; border-top: 1px solid var(--line); }
+  .price-list li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .price-num { margin-top: 32px; font-size: clamp(56px, 8vw, 88px); line-height: 1; letter-spacing: -0.02em; }
+  .price-actions { display: grid; gap: 12px; margin-top: 28px; }
+  @media (min-width: 700px) { .price-actions { grid-auto-flow: column; justify-content: start; } }
+  .price-note { margin-top: 20px; font-size: 15px; color: var(--muted); }
+
+  /* faq */
+  .faq { border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { padding-block: 20px; }
+  .faq p { padding: 0 32px 24px 0; max-width: 64ch; }
+
+  /* footer */
+  .foot { border-top: 1px solid var(--line); color: var(--muted); padding: 56px 0 120px; font-size: 15px; }
+  @media (min-width: 900px) { .foot { padding-bottom: 56px; } }
+  .foot-grid { display: grid; gap: 32px; }
+  .foot-disc { color: var(--ink); max-width: 48ch; }
+  .foot-cols { display: grid; gap: 20px; }
+  @media (min-width: 700px) { .foot-cols { grid-template-columns: repeat(3, 1fr); } }
+
+  /* payment dialog */
+  .pay {
+    margin: auto; width: min(480px, 100% - 32px); max-height: calc(100% - 32px); padding: 0; border: 0; border-radius: 0;
+    background: var(--bg); color: var(--ink);
+  }
+  .pay::backdrop { background: rgb(0 0 0 / 0.55); }
+  .pay-form { padding: 24px; display: grid; gap: 20px; }
+  @media (min-width: 700px) { .pay-form { padding: 36px; } }
+  .pay-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .pay-head h2 { font-size: 26px; line-height: 1.15; }
+  .pay-close { position: relative; flex: 0 0 44px; height: 44px; margin: -10px -10px 0 0; border: 0; background: none; cursor: pointer; color: inherit; }
+  .pay-close::before, .pay-close::after { content: ''; position: absolute; left: 13px; top: 21px; width: 18px; height: 1px; background: currentColor; transform: rotate(45deg); }
+  .pay-close::after { transform: rotate(-45deg); }
+  .pay-price { font-size: 48px; line-height: 1; letter-spacing: -0.02em; margin-top: -8px; }
+  .pay-methods { border: 0; padding: 0; margin: 0; display: grid; gap: 0; }
+  .pay-methods legend { font-size: 15px; color: var(--muted); margin-bottom: 10px; padding: 0; }
+  .pay-method { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid var(--line); cursor: pointer; }
+  .pay-method + .pay-method { border-top: 0; }
+  .pay-method:has(input:checked) { border-color: var(--ink); outline: 1px solid var(--ink); outline-offset: -2px; }
+  .pay-method input { margin: 4px 0 0; accent-color: var(--ink); width: 18px; height: 18px; flex: 0 0 auto; }
+  .pay-method b { display: block; font-weight: 500; }
+  .pay-method small { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .pay-email { display: grid; gap: 8px; }
+  .pay-email[hidden] { display: none; }
+  .pay-email label { font-size: 15px; color: var(--muted); }
+  .pay-email input {
+    height: 52px; padding: 0 14px; border: 1px solid var(--line); border-radius: 0; background: var(--field);
+    font: 400 17px var(--font); color: var(--ink);
+  }
+  .pay-email input:focus-visible { outline: 2px solid var(--ink); outline-offset: 0; border-color: var(--ink); }
+  .pay-msg:empty { display: none; }
+  .pay-msg { color: var(--error); font-size: 15px; }
+  .pay-submit { width: 100%; }
+  .pay-submit:disabled { opacity: 0.6; cursor: progress; }
+  .pay-terms { font-size: 13px; color: var(--muted); }
+
+  /* sticky buy bar, mobile only */
+  .sticky {
+    position: fixed; inset: auto 0 0 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+    background: var(--bg); border-top: 1px solid var(--line);
+  }
+  .sticky[hidden] { display: none; }
+  .sticky-price { font-size: 26px; font-weight: 500; }
+  .sticky .btn { min-width: 180px; }
+  @media (min-width: 900px) { .sticky { display: none; } }
+</style>

@@ -1,0 +1,23 @@
+---
+// Simple page frame for service pages: logo, content, contacts.
+import Layout from '../layouts/Layout.astro';
+import { config } from '../config';
+interface Props { lang: 'ru' | 'en'; title: string; noindex?: boolean }
+const { lang, title, noindex } = Astro.props;
+const home = lang === 'en' ? '/en' : '/';
+---
+<Layout lang={lang} title={`${title} | MOVA`} description={title} noindex={noindex}>
+  <header class="s-head wrap">
+    <a class="logo" href={home}>MOVA<span class="logo-kt">KT</span></a>
+  </header>
+  <main class="s-main wrap"><slot /></main>
+  <footer class="s-foot wrap">
+    <a href={`mailto:${config.email}`}>{config.email}</a>
+    <a href={config.telegram} rel="noopener">Telegram</a>
+  </footer>
+</Layout>
+<style>
+  .s-head { padding-block: 20px; border-bottom: 1px solid var(--line); }
+  .s-main { padding-block: 56px 96px; min-height: 60svh; }
+  .s-foot { display: flex; gap: 24px; padding-block: 24px 40px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+</style>

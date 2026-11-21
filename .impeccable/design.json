@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T12:33:59.355858+00:00",
+  "title": "Design System: MOVA",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Milk Ground",
+        "canonical": "#faf8f5",
+        "tonalRamp": [
+          "#2b2925",
+          "#4a4640",
+          "#6b665e",
+          "#8f8a81",
+          "#b3ada4",
+          "#d4cfc7",
+          "#ece8e2",
+          "#faf8f5"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Sand Surface",
+        "canonical": "#ece7e0",
+        "tonalRamp": [
+          "#2a2620",
+          "#48423a",
+          "#686056",
+          "#8b8276",
+          "#ada498",
+          "#cdc5ba",
+          "#ece7e0",
+          "#f7f4f0"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#454545",
+          "#666666",
+          "#888888",
+          "#aaaaaa",
+          "#cccccc",
+          "#eeeeee",
+          "#ffffff"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#1d1b19",
+        "tonalRamp": [
+          "#1d1b19",
+          "#3a3734",
+          "#58544f",
+          "#77726c",
+          "#97928b",
+          "#b8b3ac",
+          "#d9d5cf",
+          "#f3f1ee"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Warm Grey Muted",
+        "canonical": "#69645e",
+        "tonalRamp": [
+          "#24221f",
+          "#3d3a36",
+          "#55514c",
+          "#69645e",
+          "#88837c",
+          "#a9a49d",
+          "#cbc7c1",
+          "#ebe8e4"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e3ded7",
+        "tonalRamp": [
+          "#2a2723",
+          "#47433d",
+          "#66615a",
+          "#878179",
+          "#a8a29a",
+          "#c8c2ba",
+          "#e3ded7",
+          "#f5f2ee"
+        ]
+      },
+      "line-on-surface": {
+        "role": "neutral",
+        "displayName": "Hairline on Sand",
+        "canonical": "#d8d0c5",
+        "tonalRamp": [
+          "#29251f",
+          "#46403a",
+          "#655e55",
+          "#867e73",
+          "#a79f93",
+          "#c5bdb1",
+          "#d8d0c5",
+          "#efebe5"
+        ]
+      },
+      "error": {
+        "role": "tertiary",
+        "displayName": "Brick Error",
+        "canonical": "#9b1c1c",
+        "tonalRamp": [
+          "#3a0b0b",
+          "#5c1212",
+          "#7d1818",
+          "#9b1c1c",
+          "#bf4a45",
+          "#d97b75",
+          "#eeb0ab",
+          "#fae3e1"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Price; lesson numbers at a smaller size in muted."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Lesson titles, price card title, service page headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "About paragraph."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 17px (18px from 900px)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase muted section labels in the ledger column; placeholder captions."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Uppercase button labels."
+      },
+      "logo": {
+        "displayName": "Wordmark",
+        "purpose": "MOVA spaced caps with small KT."
+      }
+    },
+    "shadows": [],
+    "overlays": [
+      {
+        "name": "dialog-backdrop",
+        "value": "rgb(0 0 0 / 0.55)",
+        "purpose": "Payment dialog backdrop; the only depth device."
+      }
+    ],
+    "motion": [
+      {
+        "name": "color-swap",
+        "value": "background-color 0.2s, color 0.2s",
+        "purpose": "Button hover inversion."
+      },
+      {
+        "name": "accordion-bar",
+        "value": "transform 0.2s ease-out",
+        "purpose": "Plus-to-minus bar rotation on details."
+      },
+      {
+        "name": "scroll",
+        "value": "scroll-behavior: smooth (auto under reduced motion)",
+        "purpose": "Anchor nav."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "pair",
+        "value": "700px"
+      },
+      {
+        "name": "desktop",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Ink-filled square button for every purchase action.",
+      "html": "<button class=\"ds-btn ds-btn-solid\">Купить уроки — €9</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;font:500 14px/1 'Onest',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;border-radius:0;border:1px solid #1d1b19;cursor:pointer;transition:background-color .2s,color .2s}.ds-btn-solid{background:#1d1b19;color:#faf8f5}.ds-btn-solid:hover{background:transparent;color:#1d1b19}.ds-btn:focus-visible{outline:2px solid currentColor;outline-offset:3px}"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Small outlined header buy button.",
+      "html": "<button class=\"ds-btn-line\">Купить €9</button>",
+      "css": ".ds-btn-line{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;font:500 12px/1 'Onest',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;border-radius:0;border:1px solid #1d1b19;background:transparent;color:#1d1b19;cursor:pointer;transition:background-color .2s,color .2s}.ds-btn-line:hover{background:#1d1b19;color:#faf8f5}.ds-btn-line:focus-visible{outline:2px solid currentColor;outline-offset:3px}"
+    },
+    {
+      "name": "Email Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Paper-white square field with hairline border.",
+      "html": "<label class=\"ds-field\"><span>Email</span><input type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;font-family:'Onest',system-ui,sans-serif}.ds-field span{font-size:15px;color:#69645e}.ds-field input{height:52px;padding:0 14px;border:1px solid #e3ded7;border-radius:0;background:#fff;font:400 17px 'Onest',system-ui,sans-serif;color:#1d1b19}.ds-field input:focus-visible{outline:2px solid #1d1b19;outline-offset:0;border-color:#1d1b19}"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "description": "Wordmark, language switch, anchor nav and small buy button over a hairline.",
+      "html": "<header class=\"ds-head\"><a class=\"ds-logo\" href=\"#\">MOVA<span>KT</span></a><nav class=\"ds-langs\"><a aria-current=\"true\">RU</a> / <a>EN</a></nav><nav class=\"ds-nav\"><a href=\"#\">Для кого</a><a href=\"#\">Уроки</a><a href=\"#\">Цена</a></nav></header>",
+      "css": ".ds-head{display:flex;align-items:center;gap:28px;padding:20px 0;border-bottom:1px solid #e3ded7;font-family:'Onest',system-ui,sans-serif;color:#1d1b19;background:#faf8f5}.ds-logo{display:inline-flex;align-items:flex-start;gap:4px;font-weight:600;font-size:16px;letter-spacing:.16em;text-decoration:none;color:inherit}.ds-logo span{font-size:9px;font-weight:500;letter-spacing:.1em;opacity:.75;margin-top:1px}.ds-langs{font-size:13px;color:#69645e}.ds-langs a[aria-current]{color:#1d1b19}.ds-nav{margin-left:auto;display:flex;gap:28px;font-size:15px;font-weight:500}.ds-nav a{text-decoration:none;color:inherit}.ds-nav a:hover{color:#69645e}"
+    },
+    {
+      "name": "Programme Rows",
+      "kind": "custom",
+      "description": "Signature: lessons as ruled rows with minutes in muted tabular figures.",
+      "html": "<ul class=\"ds-rows\"><li><span>Осанка</span><span>10 минут</span></li><li><span>Спина</span><span>25 минут</span></li><li><span>Растяжка</span><span>15 минут</span></li></ul>",
+      "css": ".ds-rows{list-style:none;padding:0;margin:0;border-top:1px solid #e3ded7;font:400 17px/1.55 'Onest',system-ui,sans-serif;color:#1d1b19;max-width:420px}.ds-rows li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #e3ded7}.ds-rows li span:last-child{color:#69645e;font-variant-numeric:tabular-nums;white-space:nowrap}"
+    },
+    {
+      "name": "Price Card",
+      "kind": "card",
+      "refersTo": "price-card",
+      "description": "The one sand block: title, ruled inclusions, numeral price, solid button.",
+      "html": "<div class=\"ds-price\"><h3>Три урока</h3><ul><li>3 видеоурока</li><li>Доступ без аккаунта</li></ul><p class=\"ds-price-num\">€9</p><button>Оплатить €9</button></div>",
+      "css": ".ds-price{background:#ece7e0;padding:48px;font-family:'Onest',system-ui,sans-serif;color:#1d1b19;border-radius:0}.ds-price h3{margin:0;font-size:30px;font-weight:500}.ds-price ul{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid #d8d0c5}.ds-price li{padding:12px 0;border-bottom:1px solid #d8d0c5}.ds-price-num{margin:32px 0 0;font-size:72px;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.ds-price button{margin-top:28px;min-height:52px;padding:0 24px;font:500 14px/1 'Onest',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;background:#1d1b19;color:#faf8f5;border:1px solid #1d1b19;border-radius:0;cursor:pointer;transition:background-color .2s,color .2s}.ds-price button:hover{background:transparent;color:#1d1b19}"
+    },
+    {
+      "name": "Payment Method Option",
+      "kind": "custom",
+      "description": "Stacked radio options in the payment dialog; selected one in ink.",
+      "html": "<fieldset class=\"ds-methods\"><label><input type=\"radio\" name=\"m\" checked><span><b>Картой €9</b><small>Visa, Mastercard</small></span></label><label><input type=\"radio\" name=\"m\"><span><b>Через Telegram</b><small>Оплата в рублях</small></span></label></fieldset>",
+      "css": ".ds-methods{border:0;padding:0;margin:0;display:grid;font-family:'Onest',system-ui,sans-serif;color:#1d1b19;max-width:420px}.ds-methods label{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid #e3ded7;cursor:pointer}.ds-methods label+label{border-top:0}.ds-methods label:has(input:checked){border-color:#1d1b19;outline:1px solid #1d1b19;outline-offset:-2px}.ds-methods input{margin:4px 0 0;accent-color:#1d1b19;width:18px;height:18px}.ds-methods b{display:block;font-weight:500}.ds-methods small{display:block;margin-top:4px;font-size:14px;color:#69645e}"
+    },
+    {
+      "name": "Sticky Buy Bar",
+      "kind": "custom",
+      "refersTo": "sticky-bar",
+      "description": "Phone-only bottom bar on milk with a top hairline.",
+      "html": "<div class=\"ds-sticky\"><span>€9</span><button>Купить уроки</button></div>",
+      "css": ".ds-sticky{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 20px;background:#faf8f5;border-top:1px solid #e3ded7;font-family:'Onest',system-ui,sans-serif;color:#1d1b19}.ds-sticky span{font-size:26px;font-weight:500;font-variant-numeric:tabular-nums}.ds-sticky button{min-width:180px;min-height:52px;font:500 14px/1 'Onest',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;background:#1d1b19;color:#faf8f5;border:1px solid #1d1b19;border-radius:0;cursor:pointer}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Молоко",
+    "overview": "A milk-white page, warm and nearly silent. The system holds back almost all colour so the photographs of Katerina and her students carry it; everything else is ink on warm off-white, separated by hairline rules. It reads like a well-set printed programme: a ledger of sections, each with a small spaced-caps label on the left and plain content on the right.\n\nDensity is low and the rhythm generous. Structure comes from 1px lines, not boxes, shadows or tints. The single filled surface below the photos is the price card, a sand-toned block that marks the one place where a decision is made. Corners are square throughout, and the type is one family, Onest, in three weights.",
+    "keyCharacteristics": [
+      "Colour lives only in photographs; UI is ink, warm ground and hairlines.",
+      "Sections as a ruled ledger: label column (3fr) beside content (9fr) on desktop.",
+      "Lists are drawn as ruled rows, not bullets or cards.",
+      "Square corners, 1px lines, no shadows.",
+      "One filled surface (the price card) besides photo frames."
+    ],
+    "rules": [
+      {
+        "name": "The Milk Rule",
+        "body": "The interface carries no hue. If a screen needs colour, it comes from a photograph, never from a tinted panel, badge, gradient or coloured text.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Sand Block Rule",
+        "body": "Sand fills photo frames and the price card. No other content block gets a background.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Onest only. No second display face, no serif accents, no mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Minutes Rule",
+        "body": "Prices, minutes and lesson numbers set in tabular figures so ruled rows align.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Separation is a 1px line in the hairline colour. Never a shadow, never a gap with a tinted band.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep the interface to ink, milk, sand and hairlines; let photographs bring the colour.",
+      "**Do** separate everything with 1px hairline rules; use the on-sand hairline inside the price card.",
+      "**Do** draw lists as ruled rows with tabular figures on the right.",
+      "**Do** use the solid ink button for every purchase action and route it to the one payment dialog.",
+      "**Do** keep corners square and icons built from 1px bars."
+    ],
+    "donts": [
+      "**Don't** add a hue to UI: no coloured panels, pills, badges or gradients.",
+      "**Don't** use shadows or rounded corners.",
+      "**Don't** give content blocks a background other than the price card's sand.",
+      "**Don't** introduce a second typeface.",
+      "**Don't** put a small uppercase line above a heading; the uppercase label belongs only in the ledger column as the section heading itself."
+    ]
+  }
+}

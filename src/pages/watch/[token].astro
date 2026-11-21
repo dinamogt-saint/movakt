@@ -1,0 +1,63 @@
+---
+import Shell from '../../components/Shell.astro';
+import { checkToken, copy, lessonEmbeds } from '../../lib/server';
+import { config } from '../../config';
+
+export const prerender = false;
+const access = await checkToken(Astro.params.token ?? '');
+if (!access) return Astro.rewrite('/404');
+Astro.response.headers.set('x-robots-tag', 'noindex');
+Astro.response.headers.set('cache-control', 'private, no-store');
+
+const c = copy(access.lang);
+const t = c.watch;
+const lessons = c.lessons.items;
+const embeds = await lessonEmbeds(lessons.length);
+---
+<Shell lang={access.lang} title={t.title} noindex>
+  <h1>{t.title}</h1>
+  <p class="lead">{t.lead}</p>
+  <section class="prep">
+    <h2>{t.prepare}</h2>
+    <ul>{t.prep.map((p) => <li>{p}</li>)}</ul>
+  </section>
+  <ol class="lessons">
+    {lessons.map((l, i) => (
+      <li class="lesson">
+        <div class="meta"><span class="num">{l.num}</span><span class="min">≈ {l.min} {c.lessons.minutes}</span></div>
+        <h2>{l.title}</h2>
+        <div class="player">
+          {embeds[i] ? (
+            <iframe src={embeds[i]} title={l.title} loading="lazy" allow="accelerometer; gyroscope; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+          ) : (
+            <div class="ph">{t.placeholder}</div>
+          )}
+        </div>
+        <p>{l.body[0]}</p>
+      </li>
+    ))}
+  </ol>
+  <section class="after">
+    <p>{t.gear}</p>
+    <p>{t.review} <a href={config.telegram} rel="noopener">{t.reviewLink}</a></p>
+    <p>{t.support} <a href={`mailto:${config.email}`}>{config.email}</a></p>
+  </section>
+</Shell>
+<style>
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+  .lead { margin-top: 12px; color: var(--muted); max-width: 52ch; }
+  .prep { margin-top: 40px; padding-block: 20px; border-block: 1px solid var(--line); }
+  .prep h2 { font-size: 17px; font-weight: 600; }
+  .prep ul { margin: 8px 0 0; padding-left: 1.1em; }
+  .lessons { list-style: none; padding: 0; margin: 0; }
+  .lesson { padding-block: 48px; border-bottom: 1px solid var(--line); max-width: 880px; }
+  .meta { display: flex; gap: 16px; align-items: baseline; }
+  .num { font-size: 40px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .min { color: var(--muted); font-size: 15px; }
+  .lesson h2 { margin-top: 12px; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; }
+  .player { margin-top: 20px; aspect-ratio: 16 / 9; background: var(--surface); }
+  .player iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .player .ph { height: 100%; }
+  .lesson p { margin-top: 16px; max-width: 64ch; }
+  .after { padding-top: 40px; display: grid; gap: 12px; max-width: 64ch; }
+</style>

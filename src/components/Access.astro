@@ -1,0 +1,49 @@
+---
+import Shell from './Shell.astro';
+import ru from '../content/ru.json';
+import en from '../content/en.json';
+interface Props { lang: 'ru' | 'en' }
+const { lang } = Astro.props;
+const t = (lang === 'en' ? en : ru).access;
+---
+<Shell lang={lang} title={t.title}>
+  <div class="box">
+    <h1>{t.title}</h1>
+    <p>{t.lead}</p>
+    <form class="form" data-access data-lang={lang} data-done={t.done} data-error={t.error}>
+      <label for="a-email">{t.email}</label>
+      <input id="a-email" name="email" type="email" required autocomplete="email" inputmode="email" />
+      <button class="btn btn-solid submit" type="submit">{t.submit}</button>
+      <p class="msg" data-msg role="status"></p>
+    </form>
+    {t.tg && <p class="hint">{t.tg}</p>}
+  </div>
+</Shell>
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-access]')!;
+  const msg = form.querySelector<HTMLElement>('[data-msg]')!;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button')!;
+    btn.disabled = true;
+    try {
+      const r = await fetch('/api/resend-link', {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: new FormData(form).get('email'), lang: form.dataset.lang }),
+      });
+      msg.textContent = r.ok || r.status === 429 ? form.dataset.done! : form.dataset.error!;
+    } catch { msg.textContent = form.dataset.error!; }
+    btn.disabled = false;
+  });
+</script>
+<style>
+  .box { max-width: 560px; display: grid; gap: 20px; }
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+  .form { display: grid; gap: 10px; }
+  label { font-size: 15px; color: var(--muted); }
+  input { height: 52px; padding: 0 14px; border: 1px solid var(--line); border-radius: 0; background: var(--field); font: 400 17px var(--font); color: var(--ink); }
+  input:focus-visible { outline: 2px solid var(--ink); outline-offset: 0; }
+  .submit { margin-top: 8px; }
+  .msg:empty { display: none; }
+  .hint { font-size: 15px; color: var(--muted); }
+</style>
