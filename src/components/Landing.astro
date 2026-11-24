@@ -301,7 +301,7 @@ const lessons = t.lessons.items;
 
   /* lessons */
   .lesson { padding: 40px 0; border-bottom: 1px solid var(--line); max-width: 64ch; }
-  .lesson-num { display: block; font-size: clamp(48px, 7vw, 72px); font-weight: 400; line-height: 1; letter-spacing: -0.02em; color: var(--muted); }
+  .lesson-num { display: block; font-size: clamp(48px, 7vw, 72px); font-weight: 400; line-height: 1; letter-spacing: -0.02em; color: var(--cobalt); }
   .lesson h3 { margin-top: 20px; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; }
   .lesson-min { margin: 6px 0 16px; font-size: 15px; color: var(--muted); }
   .lesson p + p { margin-top: 12px; }
@@ -348,7 +348,7 @@ const lessons = t.lessons.items;
   @media (min-width: 900px) { .rack-hint { display: none; } }
 
   /* price: the one upholstered card below the hero */
-  .price-card { --line: #d8d0c5; background: var(--surface); padding: 32px 24px; }
+  .price-card { --line: #d5daec; background: var(--surface); padding: 32px 24px; }
   @media (min-width: 700px) { .price-card { padding: 48px; } }
   .price-card h3 { font-size: clamp(26px, 3vw, 34px); }
   .price-list { list-style: none; padding: 0; margin-top: 24px; border-top: 1px solid var(--line); }
@@ -413,7 +413,8 @@ const lessons = t.lessons.items;
     position: fixed; inset: auto 0 0 0; z-index: 10;
     display: flex; align-items: center; justify-content: space-between; gap: 16px;
     padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
-    background: var(--bg); border-top: 1px solid var(--line);
+    --ink: #ffffff; --bg: #15171c;
+    background: var(--bg); color: var(--ink);
   }
   .sticky[hidden] { display: none; }
   .sticky-price { font-size: 26px; font-weight: 500; }

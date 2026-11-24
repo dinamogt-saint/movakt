@@ -6,7 +6,7 @@ Landing + sales site for Katerina's 3-lesson posture mini-course. Full spec: doc
 - All copy lives in src/content/ru.json and src/content/en.json. No hardcoded strings in markup.
 - Price and outbound links: src/config.ts only.
 - Page: src/components/Landing.astro (takes `t` + `lang`). Service pages use src/components/Shell.astro.
-- Design direction contract: .impeccable/surfaces/src-pages-index-astro.md. Palette «Молоко» (see DESIGN.md): light ground, ink, colour only in photos. Square corners, no shadows/gradients, 1px lines, Onest.
+- Design direction contract: .impeccable/surfaces/src-pages-index-astro.md. Palette «Мел и кобальт»: white ground (#fafafb), graphite ink (#15171c), cobalt (#2747d6) only on the lesson numbers. Colour otherwise lives in photos. Square corners, no shadows/gradients, 1px lines, Onest.
 
 ## Stage 2 (payments, access)
 - Runs on Cloudflare Workers via @astrojs/cloudflare (static pages + server routes). Bindings in wrangler.jsonc, secrets in .dev.vars (template: .dev.vars.example).
